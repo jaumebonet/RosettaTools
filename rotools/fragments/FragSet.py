@@ -2,12 +2,10 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-15 15:54:35
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-16 18:40:15
+# @Last Modified time: 2016-03-17 15:19:15
 import os
 import re
 from collections import Counter
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 from .Fragment import Fragment, FragmentPosition
 
@@ -57,6 +55,12 @@ class FragSet(object):
         return max(self.fragments.keys())
 
     def plot(self, fileprefix = None, format = "svg", to_file = True, show = True):
+        try:
+            import seaborn as sns
+            import matplotlib.pyplot as plt
+        except:
+            raise ImportError("Plotting fragments requires seaborn and matplotlib.")
+
         phi = [[] for i in range(self.max_position() + 1)]
         psi = [[] for i in range(self.max_position() + 1)]
         sse = [[] for i in range(self.max_position() + 1)]

@@ -2,12 +2,13 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-15 15:06:45
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-16 18:49:18
+# @Last Modified time: 2016-03-17 15:39:58
 
 import os
 import sys
 import argparse
 
+# Including rotools without adding them to the PYTHONPATH
 scrdir  = os.path.dirname(os.path.realpath(__file__))
 rotools = os.path.join(scrdir, "../..")
 sys.path.append(rotools)
