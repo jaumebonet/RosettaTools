@@ -2,6 +2,6 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-17 15:40:36
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-18 11:41:13
+# @Last Modified time: 2016-03-23 15:01:23
 
-from .Form import FormFabric
+from .FormFabric import FormFabric

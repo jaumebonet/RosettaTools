@@ -2,13 +2,13 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-17 13:11:24
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-20 13:37:13
+# @Last Modified time: 2016-03-24 14:05:52
 
 
 class Constraint(object):
     """single Constraint"""
     def __init__(self, num1, num2, value, ctype="AtomPair", atm1="CA",
-                 atm2="CA", func="GAUSSIANFUNC", tag="TAG"):
+                 atm2="CA", func="GAUSSIANFUNC", dev=3.0, tag="TAG"):
         self.ctype = ctype
         self.atm1  = atm1
         self.num1  = num1
@@ -16,7 +16,7 @@ class Constraint(object):
         self.num2  = num2
         self.func  = func
         self.value = value
-        self.dev   = 2.0
+        self.dev   = dev
         self.tag   = tag
 
     def __str__(self):
@@ -30,6 +30,7 @@ class ConstraintSet(object):
     """ConstraintSet"""
     def __init__(self):
         self.constraints = []
+        self.constrnsidx = {}
 
     @staticmethod
     def parse(filename):
@@ -41,9 +42,17 @@ class ConstraintSet(object):
         return c
 
     def add_constraint(self, num1, num2, value, ctype="AtomPair", atm1="CA",
-                       atm2="CA", func="GAUSSIANFUNC", tag="TAG"):
-        c = Constraint(num1, num2, value, ctype, atm1, atm2, func, tag)
+                       atm2="CA", func="GAUSSIANFUNC", dev=3.0, tag="TAG"):
+        c = Constraint(int(num1), int(num2), value, ctype, atm1, atm2, func, dev, tag)
         self.constraints.append(c)
+        self.constrnsidx.setdefault(int(num1), {})[int(num2)] = c
+        self.constrnsidx.setdefault(int(num2), {})[int(num1)] = c
+
+    def has_contact(self, r1, r2):
+        return int(r1) in self.constrnsidx and int(r2) in self.constrnsidx[int(r1)]
+
+    def get_contact(self, r1, r2):
+        return self.constrnsidx[int(r1)][int(r2)]
 
     def __getitem__(self, key):
         return self.constraints[key]

@@ -2,7 +2,7 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-18 11:53:53
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-20 13:17:33
+# @Last Modified time: 2016-03-23 16:47:44
 
 from collections import OrderedDict
 import json
@@ -50,6 +50,7 @@ class SecondaryStructure(object):
         self.Uxyz    = np.array([0.0, 0.0, 0.0])
         self.Mxyz    = np.array([0.0, 0.0, 0.0])
         self.Dxyz    = np.array([0.0, 0.0, 0.0])
+        self.ref     = desc["ref"]            if "ref"       in desc else None
         self._seq    = int(desc["sequence"])  if "sequence"  in desc else None
 
         self.length  = desc["length"] if "length" in desc else 0
@@ -75,6 +76,9 @@ class SecondaryStructure(object):
             for x in range(self.length):
                 self._seq += weighted_choice(rand_seq[self.type])
         return self._seq
+
+    def has_ref(self):
+        return self.ref is not None
 
     def get_xyz(self, key):
         if key == "up" or key == 1:     return self.Uxyz
@@ -123,6 +127,8 @@ class SecondaryStructure(object):
         info["length"]    = self.length
         info["direction"] = self.direct
         info["edge"]      = self.edge
+        if self.ref is not None:
+            info["ref"]   = self.ref
         if full:
             info["Uxyz"]  = [round(x, 2) for x in self.Uxyz]
             info["Mxyz"]  = [round(x, 2) for x in self.Mxyz]

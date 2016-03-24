@@ -2,7 +2,7 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-17 14:41:38
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-20 15:04:32
+# @Last Modified time: 2016-03-23 15:23:46
 
 import os
 import sys
@@ -24,8 +24,6 @@ def get_options(*args, **kwds):
                         help='JSON Form definition')
     parser.add_argument('-in:id',   dest='inid', type=str, action='store',
                         help='Form identifier', default="form")
-    parser.add_argument('-out:prefix', dest='outpref', type=str, action='store',
-                        help='Image output file prefix (def:input name_img)', default=None)
 
     options = parser.parse_args()
 
