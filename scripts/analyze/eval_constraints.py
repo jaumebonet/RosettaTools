@@ -2,7 +2,7 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-24 13:17:30
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-24 14:18:05
+# @Last Modified time: 2016-03-29 10:25:54
 import os
 import sys
 from collections import Counter
@@ -17,10 +17,10 @@ from rotools.constraints import ConstraintSet
 
 def similar_to(d, mind, ca, cb, geo, bck):
     if mind >= float(d) - 3 and mind <= float(d) + 3: return "MIN"
-    if ca >= float(d) - 3 and ca <= float(d) + 3: return "CA"
-    if cb >= float(d) - 3 and cb <= float(d) + 3: return "CB"
-    if geo >= float(d) - 3 and geo <= float(d) + 3: return "GEO"
-    if bck >= float(d) - 3 and bck <= float(d) + 3: return "BCK"
+    if ca >= float(d) - 3 and ca <= float(d) + 3:     return "CA"
+    if cb >= float(d) - 3 and cb <= float(d) + 3:     return "CB"
+    if geo >= float(d) - 3 and geo <= float(d) + 3:   return "GEO"
+    if bck >= float(d) - 3 and bck <= float(d) + 3:   return "BCK"
     return "NONE"
 
 

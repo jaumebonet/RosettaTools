@@ -2,7 +2,7 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-17 17:06:04
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-24 11:35:03
+# @Last Modified time: 2016-04-07 07:21:56
 import os
 import json
 import numpy as np
@@ -14,11 +14,11 @@ from .FormMotif import FormMotif
 
 
 class FormFabric(object):
-    _DEPTH     = 7.1
-    # _DEPTH     = 9.1
+    # _DEPTH     = 7.1
+    _DEPTH     = 9.1
     _DEPTH_VAR = 1.1
-    _WIDTH     = {"H": 9.0, "E": 4.3, "C": 4.3, "X": 4.3}
-    # _WIDTH     = {"H": 10.0, "E": 4.8, "C": 4.8, "X": 4.8}
+    # _WIDTH     = {"H": 9.0, "E": 4.3, "C": 4.3, "X": 4.3}
+    _WIDTH     = {"H": 10.0, "E": 4.8, "C": 4.8, "X": 4.8}
     _WIDTH_VAR = {"H": 0.7,  "E": 0.2, "C": 0.4, "X": 0.3}
 
     def __init__(self):
@@ -51,7 +51,7 @@ class FormFabric(object):
             identf  = os.path.join(finaldir, "info.md")
             fasta   = os.path.join(finaldir, "fasta.fa")
             psipred = os.path.join(finaldir, "psipred.ss2")
-            constrs = os.path.join(finaldir, "constraints.cs")
+            constrs = os.path.join(finaldir, "constraints.cst")
             targetl = os.path.join(finaldir, "target.loop")
             tmplatl = os.path.join(finaldir, "template.loop")
             comndfl = os.path.join(finaldir, "run.command")

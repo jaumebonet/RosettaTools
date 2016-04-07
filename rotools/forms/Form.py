@@ -2,7 +2,7 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-23 15:01:29
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-23 16:50:02
+# @Last Modified time: 2016-04-07 07:25:56
 import math
 import numpy as np
 import scipy.spatial as scsp
@@ -11,7 +11,8 @@ from ..constraints import ConstraintSet
 
 
 class Form(object):
-    _AA_DIST = 3.2
+    # _AA_DIST = 3.2
+    _AA_DIST = 2.2
     _EDGE    = "CC"
 
     def __init__(self, sslist):

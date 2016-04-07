@@ -2,13 +2,13 @@
 # @Author: Jaume Bonet
 # @Date:   2016-03-17 13:11:24
 # @Last Modified by:   Jaume Bonet
-# @Last Modified time: 2016-03-24 14:05:52
+# @Last Modified time: 2016-04-07 07:23:57
 
 
 class Constraint(object):
     """single Constraint"""
     def __init__(self, num1, num2, value, ctype="AtomPair", atm1="CA",
-                 atm2="CA", func="GAUSSIANFUNC", dev=3.0, tag="TAG"):
+                 atm2="CA", func="HARMONIC", dev=3.0, tag="TAG"):
         self.ctype = ctype
         self.atm1  = atm1
         self.num1  = num1
@@ -42,7 +42,7 @@ class ConstraintSet(object):
         return c
 
     def add_constraint(self, num1, num2, value, ctype="AtomPair", atm1="CA",
-                       atm2="CA", func="GAUSSIANFUNC", dev=3.0, tag="TAG"):
+                       atm2="CA", func="HARMONIC", dev=3.0, tag="TAG"):
         c = Constraint(int(num1), int(num2), value, ctype, atm1, atm2, func, dev, tag)
         self.constraints.append(c)
         self.constrnsidx.setdefault(int(num1), {})[int(num2)] = c
